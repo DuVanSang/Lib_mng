@@ -54,8 +54,8 @@ pipeline {
                 // Tạo thư mục đích nếu chưa có
                 bat 'mkdir "D:\\Deploy\\lib_manage"'
         
-                // Sao chép từ thư mục publish trong Jenkins workspace sang ổ D
-                bat 'xcopy "%WORKSPACE%\\publish" "D:\\Deploy\\lib_manage" /E /Y /I /R'
+                // Sao chép từ thư mục build trong Jenkins workspace sang ổ D
+                bat 'xcopy "%WORKSPACE%\\build" "D:\\Deploy\\lib_manage" /E /Y /I /R'
         
                 // Khởi động lại IIS nếu đã stop
                 // bat 'iisreset /start'
