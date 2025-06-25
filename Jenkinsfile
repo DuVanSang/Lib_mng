@@ -49,7 +49,7 @@ pipeline {
                 echo 'Publishing ReactJS to D:\\Deploy\\lib_manage'
         
                 // Copy từ thư mục build (đúng thư mục mà ReactJS tạo ra)
-                bat 'xcopy "%WORKSPACE%\\library_pipeline" "D:\\Deploy\\lib_manage" /E /Y /I /R'
+               bat 'xcopy "%WORKSPACE%" "D:\\Deploy\\lib_manage" /E /Y /I /R'
             }
         }
     }
