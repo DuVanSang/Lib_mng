@@ -46,19 +46,10 @@ pipeline {
 
        stage ('Publish') {
             steps {
-                echo 'Publishing to D:\\Deploy\\myproject'
+                echo 'Publishing ReactJS to D:\\Deploy\\lib_manage'
         
-                // (Tùy chọn) Dừng IIS nếu cần ghi đè file đang chạy:
-                // bat 'iisreset /stop'
-        
-                // Tạo thư mục đích nếu chưa có
-                bat 'mkdir "D:\\Deploy\\lib_manage"'
-        
-                // Sao chép từ thư mục build trong Jenkins workspace sang ổ D
+                // Copy từ thư mục build (đúng thư mục mà ReactJS tạo ra)
                 bat 'xcopy "%WORKSPACE%\\build" "D:\\Deploy\\lib_manage" /E /Y /I /R'
-        
-                // Khởi động lại IIS nếu đã stop
-                // bat 'iisreset /start'
             }
         }
     }
