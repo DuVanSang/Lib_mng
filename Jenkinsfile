@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'Maven 3.8.6'
-        nodejs 'NodeJS 18'
-    }
-
     environment {
         BACKEND_DIR = 'backend'
         STATIC_DIR = 'backend/src/main/resources/static'
@@ -41,7 +36,6 @@ pipeline {
             }
         }
 
-        // Optional
         stage('Run JAR') {
             steps {
                 dir("${env.BACKEND_DIR}") {
