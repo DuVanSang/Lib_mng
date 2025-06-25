@@ -15,7 +15,7 @@ pipeline {
 
         stage('Build ReactJS') {
             steps {
-                bat 'npm install'
+                bat 'npm install --legacy-peer-deps'
                 bat 'npm run build'
             }
         }
