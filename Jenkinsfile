@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         BACKEND_DIR = 'backend'
-        STATIC_DIR = 'backend/src/main/resources/static'
+        STATIC_DIR = 'backend\\src\\main\\resources\\static'
     }
 
     stages {
@@ -15,23 +15,23 @@ pipeline {
 
         stage('Build ReactJS') {
             steps {
-                sh 'npm install'
-                sh 'npm run build'
+                bat 'npm install'
+                bat 'npm run build'
             }
         }
 
         stage('Copy React build to Spring Boot') {
             steps {
-                sh 'rm -rf ${STATIC_DIR}/*'
-                sh 'mkdir -p ${STATIC_DIR}'
-                sh 'cp -r build/* ${STATIC_DIR}/'
+                bat 'if exist "%STATIC_DIR%" rmdir /s /q "%STATIC_DIR%"'
+                bat 'mkdir "%STATIC_DIR%"'
+                bat 'xcopy /E /Y /I build\\* "%STATIC_DIR%\\"'
             }
         }
 
         stage('Build Spring Boot') {
             steps {
                 dir("${env.BACKEND_DIR}") {
-                    sh 'mvn clean package -DskipTests'
+                    bat 'mvn clean package -DskipTests'
                 }
             }
         }
@@ -39,7 +39,7 @@ pipeline {
         stage('Run JAR') {
             steps {
                 dir("${env.BACKEND_DIR}") {
-                    sh 'java -jar target/*.jar'
+                    bat 'java -jar target\\*.jar'
                 }
             }
         }
