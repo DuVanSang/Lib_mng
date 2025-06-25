@@ -13,36 +13,36 @@ pipeline {
             }
         }
 
-        stage('Build ReactJS') {
-            steps {
-                bat 'npm install --legacy-peer-deps'
-                bat 'npm run build'
-            }
-        }
+        // stage('Build ReactJS') {
+        //     steps {
+        //         bat 'npm install --legacy-peer-deps'
+        //         bat 'npm run build'
+        //     }
+        // }
 
-        stage('Copy React build to Spring Boot') {
-            steps {
-                bat 'if exist "%STATIC_DIR%" rmdir /s /q "%STATIC_DIR%"'
-                bat 'mkdir "%STATIC_DIR%"'
-                bat 'xcopy /E /Y /I build\\* "%STATIC_DIR%\\"'
-            }
-        }
+        // stage('Copy React build to Spring Boot') {
+        //     steps {
+        //         bat 'if exist "%STATIC_DIR%" rmdir /s /q "%STATIC_DIR%"'
+        //         bat 'mkdir "%STATIC_DIR%"'
+        //         bat 'xcopy /E /Y /I build\\* "%STATIC_DIR%\\"'
+        //     }
+        // }
 
-        stage('Build Spring Boot') {
-            steps {
-                dir("${env.BACKEND_DIR}") {
-                    bat 'mvn clean package -DskipTests'
-                }
-            }
-        }
+        // stage('Build Spring Boot') {
+        //     steps {
+        //         dir("${env.BACKEND_DIR}") {
+        //             bat 'mvn clean package -DskipTests'
+        //         }
+        //     }
+        // }
 
-        stage('Run JAR') {
-            steps {
-                dir("${env.BACKEND_DIR}") {
-                    bat 'java -jar target\\*.jar'
-                }
-            }
-        }
+        // stage('Run JAR') {
+        //     steps {
+        //         dir("${env.BACKEND_DIR}") {
+        //             bat 'java -jar target\\*.jar'
+        //         }
+        //     }
+        // }
 
        // stage ('Publish') {
        //      steps {
