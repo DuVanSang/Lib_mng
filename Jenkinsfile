@@ -43,5 +43,23 @@ pipeline {
                 }
             }
         }
+
+       stage ('Publish') {
+            steps {
+                echo 'Publishing to D:\\Deploy\\myproject'
+        
+                // (Tùy chọn) Dừng IIS nếu cần ghi đè file đang chạy:
+                // bat 'iisreset /stop'
+        
+                // Tạo thư mục đích nếu chưa có
+                bat 'mkdir "D:\\Deploy\\lib_manage"'
+        
+                // Sao chép từ thư mục publish trong Jenkins workspace sang ổ D
+                bat 'xcopy "%WORKSPACE%\\publish" "D:\\Deploy\\lib_manage" /E /Y /I /R'
+        
+                // Khởi động lại IIS nếu đã stop
+                // bat 'iisreset /start'
+            }
+        }
     }
 }
