@@ -15,12 +15,12 @@ pipeline {
             }
         }
 
-        stage('Build ReactJS') {
-            steps {
-                bat 'npm install --legacy-peer-deps'
-                bat 'npm run build'
-            }
-        }
+        // stage('Build ReactJS') {
+        //     steps {
+        //         bat 'npm install --legacy-peer-deps'
+        //         bat 'npm run build'
+        //     }
+        // }
 
         stage('Copy React build to Spring Boot') {
             steps {
