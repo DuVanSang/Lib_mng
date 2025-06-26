@@ -53,17 +53,20 @@ pipeline {
             }
         }
 
-        stage('Deploy to Tomcat') {
+                stage('Deploy to Tomcat') {
             steps {
                 echo 'Deploying to Tomcat...'
                 dir("${env.BACKEND_DIR}\\target") {
                     bat 'copy *.jar "C:\\Tomcat\\webapps\\libmanage.jar" /Y'
                 }
+                echo 'Restarting Tomcat...'
+                bat 'C:\\Tomcat\\bin\\shutdown.bat'
+                bat 'timeout /t 2'
+                bat 'C:\\Tomcat\\bin\\startup.bat'
             }
         }
-        bat 'C:\\Tomcat\\bin\\shutdown.bat'
-bat 'timeout /t 2'
-bat 'C:\\Tomcat\\bin\\startup.bat'
+
+       
 
     }
 }
