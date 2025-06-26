@@ -8,8 +8,8 @@ import {
 } from '@mui/material';
 
 import useTranslation from '@/hooks/use-translation';
-import useGetAllBuildings from '@/services/buildings/use-get-all-buildings';
-import useGetAllUrbans from '@/services/urban/use-get-all-urbans';
+import useGetAllBuildings from '../../../../services/buildings/use-get-all-buildings';
+import useGetAllUrbans from '../../../../services/urban/use-get-all-urbans';
 
 type TUrbanBuildingSelectsProps = {
   urbanFieldProps?: TextFieldProps;
