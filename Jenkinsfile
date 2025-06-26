@@ -22,13 +22,13 @@ pipeline {
         //     }
         // }
 
-        stage('Copy React build to Spring Boot') {
-            steps {
-                bat 'if exist "%STATIC_DIR%" rmdir /s /q "%STATIC_DIR%"'
-                bat 'mkdir "%STATIC_DIR%"'
-                bat 'xcopy /E /Y /I build\\* "%STATIC_DIR%\\"'
-            }
-        }
+        // stage('Copy React build to Spring Boot') {
+        //     steps {
+        //         bat 'if exist "%STATIC_DIR%" rmdir /s /q "%STATIC_DIR%"'
+        //         bat 'mkdir "%STATIC_DIR%"'
+        //         bat 'xcopy /E /Y /I build\\* "%STATIC_DIR%\\"'
+        //     }
+        // }
 
         stage('Build Spring Boot') {
             steps {
